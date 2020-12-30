@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1321
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users", "Users\Users\Users.csproj", "{E57AC2E2-A596-4EAF-95D8-1DAF868970F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HSM2.0", "HSM2.0\HSM2.0.csproj", "{278DCAAF-0FC5-419C-9D39-46AFE4B643AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E57AC2E2-A596-4EAF-95D8-1DAF868970F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E57AC2E2-A596-4EAF-95D8-1DAF868970F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E57AC2E2-A596-4EAF-95D8-1DAF868970F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E57AC2E2-A596-4EAF-95D8-1DAF868970F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{278DCAAF-0FC5-419C-9D39-46AFE4B643AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{278DCAAF-0FC5-419C-9D39-46AFE4B643AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{278DCAAF-0FC5-419C-9D39-46AFE4B643AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{278DCAAF-0FC5-419C-9D39-46AFE4B643AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {421E6136-3382-4228-B625-8D8B617693C8}
+	EndGlobalSection
+EndGlobal
