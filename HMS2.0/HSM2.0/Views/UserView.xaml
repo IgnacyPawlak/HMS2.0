@@ -51,8 +51,15 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
-        <ListView Grid.Column="1" ItemsSource="{Binding MVM.SelectedDoctor.Calendar}"/>
-        <ListView Grid.Column="1" Grid.Row="1" ItemsSource="{Binding MVM.SelectedNurse.Calendar}"/>
+        <StackPanel Grid.Column="1">
+            <Label Content="Kalendarz Doktora"/>
+            <ListView ItemsSource="{Binding MVM.SelectedDoctor.Calendar}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <Label Content="Kalendarz Pielęgniarki"/>
+            <ListView ItemsSource="{Binding MVM.SelectedNurse.Calendar}"/>
+        </StackPanel>
+        
     </Grid>
     
 </UserControl>
