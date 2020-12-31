@@ -17,23 +17,37 @@ namespace HSM2._0.ViewModel
             MVM = mvm;
         }
         public MainViewModel MVM { get; set; }
-        public ICommand CommandNameToChange => new RelayCommand(() => ExecuteCommand());
+        public ICommand LogInCommand => new RelayCommand(() => ExecuteCommand());
         string _username;
         public string Username { set { this.Set(nameof(Username), ref _username, value); } }
         string _password;
         public string Password { set { this.Set(nameof(Password), ref _password, value); } }
+        string _wrongUsernameOrPassword;
+        public string WrondUsernameOrPassword
+        {
+            get { return _wrongUsernameOrPassword; }
+            set { this.Set(nameof(WrondUsernameOrPassword), ref _wrongUsernameOrPassword, value); }
+        }
         private void ExecuteCommand()
         {
             foreach (var user in MVM.Users)
             {
                 if (_username==user.Username&&_password==user.Password)
                 {
-
-                    MVM.SelectedViewModel = MVM.UVM;
+                    MVM.LoggedInUser = user;
+                    if (user.GetType() != typeof(Admin))
+                    {
+                        user.Calendar.Add(DateTime.Now);
+                        MVM.SelectedViewModel = MVM.UVM;
+                    }
+                    else
+                    {
+                        //MVM.SelectedViewModel = MVM.UVM;
+                    }
                 }
                 else
                 {
-
+                    WrondUsernameOrPassword = "Błędna nazwa użytkownika lub hasło";
                 }
             }
         }

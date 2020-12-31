@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HSM2._0.Views"
+             xmlns:components="clr-namespace:HSM2._0.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding Login, Source={StaticResource Locator}}">
@@ -11,7 +12,8 @@
         <Label>Login</Label>
         <TextBox Text="{Binding Username, Mode=OneWayToSource}"/>
         <Label>Hasło</Label>
-        <TextBox Text="{Binding Password, Mode=OneWayToSource}"/>
-        <Button Command="{Binding CommandNameToChange}">Zaloguj</Button>
+        <components:BindablePasswordBox Password="{Binding Password}"/>
+        <Label Content="{Binding WrondUsernameOrPassword}"/>
+        <Button Command="{Binding LogInCommand}">Zaloguj</Button>
     </StackPanel>
 </UserControl>

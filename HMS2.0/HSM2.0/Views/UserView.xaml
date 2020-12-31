@@ -6,9 +6,46 @@
              xmlns:local="clr-namespace:HSM2._0.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             DataContext="{Binding Users, Source={StaticResource Locator}}">
+             DataContext="{Binding User, Source={StaticResource Locator}}">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Label Content="Doktorzy:"/>
+            <ListView ItemsSource="{Binding MVM.ListOfDoctors}" SelectedItem="{Binding MVM.SelectedUser}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1} Specjalizacja: {2}">
+                                    <Binding Path="Name"/>
+                                    <Binding Path="Surname"/>
+                                    <Binding Path="Speciality"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Content="Pielęgniarki:"/>
+            <ListView ItemsSource="{Binding MVM.ListOfNurses}" SelectedItem="{Binding MVM.SelectedUser}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Name"/>
+                                    <Binding Path="Surname"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <ListView Grid.Column="1" ItemsSource="{Binding MVM.SelectedUser.Calendar}"/>
     </Grid>
     
 </UserControl>

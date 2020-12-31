@@ -7,20 +7,8 @@ using System.Threading.Tasks;
 namespace Users
 {
     [Serializable]
-    public class Admin : IUsers
+    public class Admin : User
     {
-        public string Name { get; }
-
-        public string Surname { get; }
-
-        public string Pesel { get; }
-
-        public string Username { get; }
-
-        public string Password { get; }
-
-        public List<DateTime> Calendar { get; }
-
         public Admin(string name, string surname, string pesel, string username, string password)
         {
             Name = name;
