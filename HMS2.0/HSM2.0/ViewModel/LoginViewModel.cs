@@ -23,10 +23,10 @@ namespace HSM2._0.ViewModel
         string _password;
         public string Password { set { this.Set(nameof(Password), ref _password, value); } }
         string _wrongUsernameOrPassword;
-        public string WrondUsernameOrPassword
+        public string WrongUsernameOrPassword
         {
             get { return _wrongUsernameOrPassword; }
-            set { this.Set(nameof(WrondUsernameOrPassword), ref _wrongUsernameOrPassword, value); }
+            set { this.Set(nameof(WrongUsernameOrPassword), ref _wrongUsernameOrPassword, value); }
         }
         private void ExecuteCommand()
         {
@@ -37,7 +37,8 @@ namespace HSM2._0.ViewModel
                     MVM.LoggedInUser = user;
                     if (user.GetType() != typeof(Admin))
                     {
-                        user.Calendar.Add(DateTime.Now);
+                        MVM.Doctor.Calendar.Add(DateTime.Now);
+                        MVM.Nurse.Calendar.Add(DateTime.Today);
                         MVM.SelectedViewModel = MVM.UVM;
                     }
                     else
@@ -47,7 +48,7 @@ namespace HSM2._0.ViewModel
                 }
                 else
                 {
-                    WrondUsernameOrPassword = "Błędna nazwa użytkownika lub hasło";
+                    WrongUsernameOrPassword = "Błędna nazwa użytkownika lub hasło";
                 }
             }
         }

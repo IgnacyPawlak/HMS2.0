@@ -12,9 +12,13 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <StackPanel>
             <Label Content="Doktorzy:"/>
-            <ListView ItemsSource="{Binding MVM.ListOfDoctors}" SelectedItem="{Binding MVM.SelectedUser}">
+            <ListView ItemsSource="{Binding MVM.ListOfDoctors}" SelectedItem="{Binding MVM.SelectedDoctor}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
@@ -29,8 +33,10 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
             <Label Content="Pielęgniarki:"/>
-            <ListView ItemsSource="{Binding MVM.ListOfNurses}" SelectedItem="{Binding MVM.SelectedUser}">
+            <ListView ItemsSource="{Binding MVM.ListOfNurses}" SelectedItem="{Binding MVM.SelectedNurse}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
@@ -45,7 +51,8 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
-        <ListView Grid.Column="1" ItemsSource="{Binding MVM.SelectedUser.Calendar}"/>
+        <ListView Grid.Column="1" ItemsSource="{Binding MVM.SelectedDoctor.Calendar}"/>
+        <ListView Grid.Column="1" Grid.Row="1" ItemsSource="{Binding MVM.SelectedNurse.Calendar}"/>
     </Grid>
     
 </UserControl>

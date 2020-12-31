@@ -31,8 +31,10 @@ namespace HSM2._0.ViewModel
         public ObservableCollection<IUsers> ListOfUsers { get { return _listOfUsers; } set { this.Set(nameof(ListOfUsers), ref _listOfUsers, value); } }
         ObservableCollection<IUsers> _listOfNurses = new ObservableCollection<IUsers>();
         public ObservableCollection<IUsers> ListOfNurses { get { return _listOfNurses; } set { this.Set(nameof(ListOfNurses), ref _listOfNurses, value); } }
-        User _selectedUser;
-        public User SelectedUser { get { return _selectedUser; } set { this.Set(nameof(SelectedUser), ref _selectedUser, value); } }
+        User _selectedDoctor;
+        public User SelectedDoctor { get { return _selectedDoctor; } set { this.Set(nameof(SelectedDoctor), ref _selectedDoctor, value); } }
+        User _selectedNurse;
+        public User SelectedNurse { get { return _selectedNurse; } set { this.Set(nameof(SelectedNurse), ref _selectedNurse, value); } }
         public MainViewModel()
         {
             UVM = new UserViewModel(this);
