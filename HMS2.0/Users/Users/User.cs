@@ -18,6 +18,8 @@ namespace Users
 
         public string Password { get; set; }
 
+        public string Position { get; set; }
+
         public List<DateTime> Calendar { get; set; } = new List<DateTime>();
     }
 }

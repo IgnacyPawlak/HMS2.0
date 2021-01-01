@@ -37,13 +37,15 @@ namespace HSM2._0.ViewModel
                     MVM.LoggedInUser = user;
                     if (user.GetType() != typeof(Admin))
                     {
-                        MVM.Doctor.Calendar.Add(DateTime.Now);
+                        MVM.Doctor.Calendar.Add(DateTime.Today);
                         MVM.Nurse.Calendar.Add(DateTime.Today);
                         MVM.SelectedViewModel = MVM.UVM;
                     }
                     else
                     {
-                        //MVM.SelectedViewModel = MVM.UVM;
+                        MVM.Doctor.Calendar.Add(DateTime.Today);
+                        MVM.Nurse.Calendar.Add(DateTime.Today);
+                        MVM.SelectedViewModel = MVM.AVM;
                     }
                 }
                 else

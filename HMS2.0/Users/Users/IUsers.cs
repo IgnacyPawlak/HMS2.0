@@ -13,6 +13,7 @@ namespace Users
         string Pesel { get; }
         string Username { get; }
         string Password { get; }
+        string Position { get; set; }
         List<DateTime> Calendar { get; }
     }
 }

@@ -18,6 +18,7 @@ namespace Users
             Password = password;
             PWZ = pwz;
             Speciality = speciality;
+            Position = "Lekarz";
         }
     }
 }

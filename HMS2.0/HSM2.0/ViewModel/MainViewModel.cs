@@ -15,6 +15,8 @@ namespace HSM2._0.ViewModel
         public UserViewModel UVM { get { return _uvm; } set { this.Set(nameof(UVM), ref _uvm, value); } }
         LoginViewModel _lvm;
         public LoginViewModel LVM { get { return _lvm; } set { this.Set(nameof(LVM), ref _lvm, value); } }
+        AdminViewModel _avm;
+        public AdminViewModel AVM { get { return _avm; } set { this.Set(nameof(AVM), ref _avm, value); } }
         List<IUsers> _users = new List<IUsers>();
         public List<IUsers> Users { get { return _users; } set { this.Set(nameof(Users), ref _users, value); } }
         Admin _admin = new Admin("admin", "admin", "admin", "admin", "admin");
@@ -31,14 +33,19 @@ namespace HSM2._0.ViewModel
         public ObservableCollection<IUsers> ListOfUsers { get { return _listOfUsers; } set { this.Set(nameof(ListOfUsers), ref _listOfUsers, value); } }
         ObservableCollection<IUsers> _listOfNurses = new ObservableCollection<IUsers>();
         public ObservableCollection<IUsers> ListOfNurses { get { return _listOfNurses; } set { this.Set(nameof(ListOfNurses), ref _listOfNurses, value); } }
+        User _selectedUser;
+        public User SelectedUser { get { return _selectedUser; } set { this.Set(nameof(SelectedUser), ref _selectedUser, value); } }
         User _selectedDoctor;
         public User SelectedDoctor { get { return _selectedDoctor; } set { this.Set(nameof(SelectedDoctor), ref _selectedDoctor, value); } }
         User _selectedNurse;
         public User SelectedNurse { get { return _selectedNurse; } set { this.Set(nameof(SelectedNurse), ref _selectedNurse, value); } }
+        int _selectedDateIndex;
+        public int SelectedDateIndex { get { return _selectedDateIndex; } set { this.Set(nameof(SelectedDateIndex), ref _selectedDateIndex, value); } }
         public MainViewModel()
         {
             UVM = new UserViewModel(this);
             LVM = new LoginViewModel(this);
+            AVM = new AdminViewModel(this);
             _selectedViewModel = LVM;
             Users.Add(Admin);
             Users.Add(Doctor);

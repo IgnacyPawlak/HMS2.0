@@ -16,6 +16,7 @@ namespace Users
             Pesel = pesel;
             Username = username;
             Password = password;
+            Position = "Pielęgniarka";
         }
     }
 }
