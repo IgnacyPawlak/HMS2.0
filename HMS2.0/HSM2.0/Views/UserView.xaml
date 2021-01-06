@@ -53,11 +53,11 @@
         </StackPanel>
         <StackPanel Grid.Column="1">
             <Label Content="Kalendarz Doktora"/>
-            <ListView ItemsSource="{Binding MVM.SelectedDoctor.Calendar, StringFormat=d}"/>
+            <ListView ItemsSource="{Binding MVM.SelectedDoctor.DutiesThisMonth, StringFormat=d}"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
             <Label Content="Kalendarz Pielęgniarki"/>
-            <ListView ItemsSource="{Binding MVM.SelectedNurse.Calendar, StringFormat=d}"/>
+            <ListView ItemsSource="{Binding MVM.SelectedNurse.DutiesThisMonth, StringFormat=d}"/>
         </StackPanel>
         
     </Grid>

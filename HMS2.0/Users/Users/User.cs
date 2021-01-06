@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Users
 {
+    [Serializable]
     public abstract class User : IUsers
     {
         public string Name { get; set; }
@@ -20,6 +22,10 @@ namespace Users
 
         public string Position { get; set; }
 
-        public List<DateTime> Calendar { get; set; } = new List<DateTime>();
+        public ObservableCollection<DateTime> Calendar { get; set; } = new ObservableCollection<DateTime>();
+
+        public string Speciality { get; set; }
+
+        public ObservableCollection<DateTime> DutiesThisMonth { get; set; } = new ObservableCollection<DateTime>();
     }
 }

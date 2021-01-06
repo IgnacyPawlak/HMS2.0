@@ -30,21 +30,17 @@ namespace HSM2._0.ViewModel
         }
         private void ExecuteCommand()
         {
-            foreach (var user in MVM.Users)
+            foreach (var user in MVM.ListOfUsers)
             {
                 if (_username==user.Username&&_password==user.Password)
                 {
                     MVM.LoggedInUser = user;
                     if (user.GetType() != typeof(Admin))
-                    {
-                        MVM.Doctor.Calendar.Add(DateTime.Today);
-                        MVM.Nurse.Calendar.Add(DateTime.Today);
+                    {                        
                         MVM.SelectedViewModel = MVM.UVM;
                     }
                     else
                     {
-                        MVM.Doctor.Calendar.Add(DateTime.Today);
-                        MVM.Nurse.Calendar.Add(DateTime.Today);
                         MVM.SelectedViewModel = MVM.AVM;
                     }
                 }

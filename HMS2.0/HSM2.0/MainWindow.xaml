@@ -6,10 +6,10 @@
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
         Height="800"
-        Width="800"
+        Width="1200"
         Title="MVVM Light Application"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent" WindowStyle="None" ResizeMode="NoResize">
     
     <Window.Resources>
         <ResourceDictionary>
@@ -18,8 +18,16 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-
     <Grid x:Name="LayoutRoot">
-        <ContentControl Content="{Binding SelectedViewModel}"/>
+        <Border CornerRadius="10">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#7be9f6" Offset="0.0"/>
+                    <GradientStop Color="#f083da" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+            <ContentControl Content="{Binding SelectedViewModel}"/>
+            <Button Command="{Binding ExitCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Wyjdź" Width="50" Margin="0,0,10,10"/>
     </Grid>
 </Window>

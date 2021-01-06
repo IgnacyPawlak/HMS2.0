@@ -28,12 +28,19 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Column="1">
-            <ListView ItemsSource="{Binding MVM.SelectedUser.Calendar, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding MVM.SelectedDateIndex}">
+            <ListView ItemsSource="{Binding MVM.SelectedUser.Calendar}" SelectedIndex="{Binding MVM.SelectedDateIndex}">
             </ListView>
         </StackPanel>
-        <WrapPanel Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <Button Content="Dodaj dyżur" />
-            <Button Content="Usuń dyżur" Margin="30,0,0,0" Command="{Binding DeleteDateCommand}"/>
-        </WrapPanel>
+        <StackPanel Grid.Column="1" VerticalAlignment="Bottom"  HorizontalAlignment="Center">
+            <WrapPanel HorizontalAlignment="Center" >
+                <StackPanel>
+                    <DatePicker SelectedDate="{Binding SelectedDate}"/>
+                    <Button Content="Dodaj dyżur"  Command="{Binding AddDateCommand}"/>
+                </StackPanel>
+                <Button Content="Usuń dyżur" Margin="10,0,0,0" Command="{Binding DeleteDateCommand}"/>
+            </WrapPanel>
+            <Label Content="{Binding WrongFormat}"/>
+        </StackPanel>
+        
     </Grid>
 </UserControl>

@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Users
 {
+    [Serializable]
     public abstract class Doctors : User
     {
         public int PWZ { get; set; }
-
-        public string Speciality { get; set; }
-
     }
 }
