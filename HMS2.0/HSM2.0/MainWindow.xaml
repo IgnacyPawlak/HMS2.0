@@ -9,7 +9,7 @@
         Width="1200"
         Title="MVVM Light Application"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
-        WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent" WindowStyle="None" ResizeMode="NoResize">
+        WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown">
     
     <Window.Resources>
         <ResourceDictionary>
@@ -28,6 +28,6 @@
             </Border.Background>
         </Border>
             <ContentControl Content="{Binding SelectedViewModel}"/>
-            <Button Command="{Binding ExitCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Wyjdź" Width="50" Margin="0,0,10,10"/>
+            <Button Command="{Binding ExitCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Height="25" Content="Wyjdź" Margin="0,0,10,10"/>
     </Grid>
 </Window>

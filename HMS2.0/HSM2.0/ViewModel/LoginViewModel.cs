@@ -15,13 +15,15 @@ namespace HSM2._0.ViewModel
         public LoginViewModel(MainViewModel mvm)
         {
             MVM = mvm;
+            Username = "Login";
+            Password = "Hasło";
         }
         public MainViewModel MVM { get; set; }
         public ICommand LogInCommand => new RelayCommand(() => ExecuteCommand());
         string _username;
-        public string Username { set { this.Set(nameof(Username), ref _username, value); } }
+        public string Username { get { return _username; } set { this.Set(nameof(Username), ref _username, value); } }
         string _password;
-        public string Password { set { this.Set(nameof(Password), ref _password, value); } }
+        public string Password { get { return _password; } set { this.Set(nameof(Password), ref _password, value); } }
         string _wrongUsernameOrPassword;
         public string WrongUsernameOrPassword
         {
@@ -46,6 +48,7 @@ namespace HSM2._0.ViewModel
                 }
                 else
                 {
+                    Password = "";
                     WrongUsernameOrPassword = "Błędna nazwa użytkownika lub hasło";
                 }
             }

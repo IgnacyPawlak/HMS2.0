@@ -10,6 +10,7 @@
              mc:Ignorable="d ignore">
     
     <Application.Resources>
+        <ResourceDictionary>
         <!--Global View Model Locator-->
         <vm:ViewModelLocator x:Key="Locator"
                              d:IsDataSource="True" />
@@ -22,6 +23,11 @@
         <DataTemplate DataType="{x:Type vm:AdminViewModel}">
             <views:AdminView/>
         </DataTemplate>
+        
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
     
 </Application>
