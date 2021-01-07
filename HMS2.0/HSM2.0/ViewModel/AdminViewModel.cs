@@ -29,6 +29,8 @@ namespace HSM2._0.ViewModel
 
         public ICommand DeleteDateCommand => new RelayCommand(()=> ExecuteDeleteDateCommand());
 
+        public ICommand AddNewUserCommand => new RelayCommand(() => ExecuteAddNewUserCommand());
+
         private void ExecuteAddDateCommand()
         {
             if (MVM.SelectedUser.GetType() != typeof(Admin))
@@ -120,6 +122,11 @@ namespace HSM2._0.ViewModel
         {
             if (MVM.SelectedUser.GetType() != typeof(Admin))
                 MVM.SelectedUser.Calendar.RemoveAt(MVM.SelectedDateIndex);
+        }
+
+        private void ExecuteAddNewUserCommand()
+        {
+            MVM.SelectedViewModel = MVM.ANUVM;
         }
     }
 }

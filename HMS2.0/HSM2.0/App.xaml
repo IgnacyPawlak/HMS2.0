@@ -12,18 +12,20 @@
     <Application.Resources>
         <ResourceDictionary>
         <!--Global View Model Locator-->
-        <vm:ViewModelLocator x:Key="Locator"
-                             d:IsDataSource="True" />
-        <DataTemplate DataType="{x:Type vm:UserViewModel}">
-            <views:UserView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:LoginViewModel}">
-            <views:LoginView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:AdminViewModel}">
-            <views:AdminView/>
-        </DataTemplate>
-        
+            <vm:ViewModelLocator x:Key="Locator"
+                                 d:IsDataSource="True" />
+            <DataTemplate DataType="{x:Type vm:UserViewModel}">
+                <views:UserView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+                <views:LoginView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:AdminViewModel}">
+                <views:AdminView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:AddNewUserViewModel}">
+                <views:AddNewUserView/>
+            </DataTemplate>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>

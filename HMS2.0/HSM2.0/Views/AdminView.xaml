@@ -15,18 +15,31 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding MVM.ListOfUsers}" AlternatingRowBackground="Gray" CanUserAddRows="False" AutoGenerateColumns="False" SelectedItem="{Binding MVM.SelectedUser}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Imię" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Nazwisko" Binding="{Binding Surname}"/>
-                <DataGridTextColumn Header="Pesel" Binding="{Binding Pesel}"/>
-                <DataGridTextColumn Header="Pozycja" Binding="{Binding Position}"/>
-                <DataGridTextColumn Header="Nazwa Użytkownika" Binding="{Binding Username}"/>
-                <DataGridTextColumn Header="Hasło" Binding="{Binding Password}"/>
-                <DataGridTextColumn Header="Numer PWZ" Binding="{Binding PWZ}"/>
-                <DataGridTextColumn Header="Specjalizacja" Binding="{Binding Speciality}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <StackPanel>
+            <DataGrid ItemsSource="{Binding MVM.ListOfUsers}" CanUserAddRows="False" AutoGenerateColumns="False" SelectedItem="{Binding MVM.SelectedUser}" Margin="10,10,10,10">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.RowHeaderStyle>
+                    <Style TargetType="{x:Type DataGridRowHeader}">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                </DataGrid.RowHeaderStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Imię" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Nazwisko" Binding="{Binding Surname}"/>
+                    <DataGridTextColumn Header="Pesel" Binding="{Binding Pesel}"/>
+                    <DataGridTextColumn Header="Pozycja" Binding="{Binding Position}"/>
+                    <DataGridTextColumn Header="Nazwa Użytkownika" Binding="{Binding Username}"/>
+                    <DataGridTextColumn Header="Hasło" Binding="{Binding Password}"/>
+                    <DataGridTextColumn Header="Numer PWZ" Binding="{Binding PWZ}"/>
+                    <DataGridTextColumn Header="Specjalizacja" Binding="{Binding Speciality}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>        
+            <Button Content="Dodaj nowego użytkownika" Command="{Binding AddNewUserCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="0" Margin="10,10,10,10"/>
         <StackPanel Grid.Column="1">
             <ListView ItemsSource="{Binding MVM.SelectedUser.Calendar}" SelectedIndex="{Binding MVM.SelectedDateIndex}">
             </ListView>

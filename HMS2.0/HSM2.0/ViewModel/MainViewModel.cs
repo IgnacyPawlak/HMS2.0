@@ -24,6 +24,9 @@ namespace HSM2._0.ViewModel
         AdminViewModel _avm;
         public AdminViewModel AVM { get { return _avm; } set { this.Set(nameof(AVM), ref _avm, value); } }
 
+        AddNewUserViewModel _anuvm;
+        public AddNewUserViewModel ANUVM { get { return _anuvm; } set { this.Set(nameof(ANUVM), ref _anuvm, value); } }
+
         List<IUsers> _users = new List<IUsers>();
         public List<IUsers> Users { get { return _users; } set { this.Set(nameof(Users), ref _users, value); } }
 
@@ -102,6 +105,7 @@ namespace HSM2._0.ViewModel
             UVM = new UserViewModel(this);
             LVM = new LoginViewModel(this);
             AVM = new AdminViewModel(this);
+            ANUVM = new AddNewUserViewModel(this);
             _selectedViewModel = LVM;
             Doctor.Calendar.Add(DateTime.Today);
             Nurse.Calendar.Add(DateTime.Today);

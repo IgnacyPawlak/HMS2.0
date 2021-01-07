@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="HSM2._0.Views.AddNewUserView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HSM2._0.Views"
+             xmlns:iconPaks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:components="clr-namespace:HSM2._0.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding AddNewUser, Source={StaticResource Locator}}">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox Text="{Binding Name}" FontFamily="helvetica" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Width="235" Opacity="0.5" Foreground="White"/>
+                <iconPaks:PackIconMaterial Kind="Account" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            </StackPanel>
+            <Border Width="250" Height="2" Background="White" Opacity="0.5"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox Text="{Binding Surname}" FontFamily="helvetica" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Width="235" Opacity="0.5" Foreground="White"/>
+                <iconPaks:PackIconMaterial Kind="Account" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            </StackPanel>
+            <Border Width="250" Height="2" Background="White" Opacity="0.5"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox Text="{Binding Pesel}" FontFamily="helvetica" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Width="235" Opacity="0.5" Foreground="White"/>
+                <iconPaks:PackIconMaterial Kind="Account" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            </StackPanel>
+            <Border Width="250" Height="2" Background="White" Opacity="0.5"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox Text="{Binding Username}" FontFamily="helvetica" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Width="235" Opacity="0.5" Foreground="White"/>
+                <iconPaks:PackIconMaterial Kind="Account" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            </StackPanel>
+            <Border Width="250" Height="2" Background="White" Opacity="0.5"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <components:BindablePasswordBox Password="{Binding Password}" />
+                <iconPaks:PackIconMaterial Kind="FormTextboxPassword" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            </StackPanel>
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Positions}">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.RowHeaderStyle>
+                    <Style TargetType="{x:Type DataGridRowHeader}">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                </DataGrid.RowHeaderStyle>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Position}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding Positions}"></ComboBox>                            
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</UserControl>
