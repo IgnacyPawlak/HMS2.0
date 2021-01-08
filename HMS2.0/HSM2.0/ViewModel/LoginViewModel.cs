@@ -48,7 +48,6 @@ namespace HSM2._0.ViewModel
                 }
                 else
                 {
-                    Password = "";
                     WrongUsernameOrPassword = "Błędna nazwa użytkownika lub hasło";
                 }
             }

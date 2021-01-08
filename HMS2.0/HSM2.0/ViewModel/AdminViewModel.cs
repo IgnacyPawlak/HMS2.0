@@ -30,9 +30,12 @@ namespace HSM2._0.ViewModel
 
         public ICommand DeleteDateCommand => new RelayCommand(()=> ExecuteDeleteDateCommand());
 
+        public ICommand EditUserCommand => new RelayCommand(() => MVM.SelectedViewModel = new EditUserViewModel(MVM));
+
         public ICommand AddNewUserCommand => new RelayCommand(() => ExecuteAddNewUserCommand());
 
         public ICommand DeleteUserCommand => new RelayCommand(() => ExecuteDeleteUserCommand());
+
 
         private void ExecuteAddDateCommand()
         {

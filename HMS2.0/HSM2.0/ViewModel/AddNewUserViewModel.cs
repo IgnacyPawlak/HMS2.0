@@ -138,12 +138,6 @@ namespace HSM2._0.ViewModel
 
         private void ExecuteGoBackCommand()
         {
-            Username = "Nazwa Użytkownika";
-            Password = "Hasło";
-            Name = "Imię";
-            Surname = "Nazwisko";
-            Pesel = "Pesel";
-            StringPWZ = "Numer PWZ";
             MVM.SelectedViewModel = new AdminViewModel(MVM);
         }
     }

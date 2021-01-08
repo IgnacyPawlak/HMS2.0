@@ -26,6 +26,9 @@
             <DataTemplate DataType="{x:Type vm:AddNewUserViewModel}">
                 <views:AddNewUserView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:EditUserViewModel}">
+                <views:EditUserView/>
+            </DataTemplate>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>

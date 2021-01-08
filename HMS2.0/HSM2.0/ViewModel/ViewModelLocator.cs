@@ -36,6 +36,7 @@ namespace HSM2._0.ViewModel
             SimpleIoc.Default.Register<LoginViewModel>(()=>new LoginViewModel(mvm));
             SimpleIoc.Default.Register<AdminViewModel>(()=>new AdminViewModel(mvm));
             SimpleIoc.Default.Register<AddNewUserViewModel>(()=>new AddNewUserViewModel(mvm));
+            SimpleIoc.Default.Register<EditUserViewModel>(()=>new EditUserViewModel(mvm));
         }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
@@ -73,6 +74,13 @@ namespace HSM2._0.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<AddNewUserViewModel>();
+            }
+        }
+        public EditUserViewModel EditUser
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<EditUserViewModel>();
             }
         }
         public static void Cleanup()
