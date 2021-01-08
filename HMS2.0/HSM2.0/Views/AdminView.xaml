@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HSM2._0.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="450" d:DesignWidth="1200"
              DataContext="{Binding Admin, Source={StaticResource Locator}}">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,7 +16,13 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel>
-            <DataGrid ItemsSource="{Binding MVM.ListOfUsers}" CanUserAddRows="False" AutoGenerateColumns="False" SelectedItem="{Binding MVM.SelectedUser}" Margin="10,10,10,10">
+            <DataGrid ItemsSource="{Binding MVM.ListOfUsers, UpdateSourceTrigger=PropertyChanged}" CanUserAddRows="False" AutoGenerateColumns="False" SelectedItem="{Binding MVM.SelectedUser}" Margin="10,10,10,10" BorderThickness="0" BorderBrush="Transparent" VerticalScrollBarVisibility="Auto">
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                    </Style>
+                </DataGrid.RowStyle>
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="Background" Value="Transparent"/>
@@ -39,8 +45,10 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>        
-            <Button Content="Dodaj nowego użytkownika" Command="{Binding AddNewUserCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="0" Margin="10,10,10,10"/>
+            <Button Content="Dodaj nowego użytkownika" Command="{Binding AddNewUserCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="0" Margin="10,10,10,10" Width="270" Height="30"/>
+            <Button Content="Usuń wybranego użytkownika" Command="{Binding DeleteUserCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="0" Margin="10,10,10,10" Width="270" Height="30"/>
         <StackPanel Grid.Column="1">
+            <TextBlock Text="Dyżury:" FontFamily="helvetica" FontWeight="Light" FontSize="20" Opacity="0.5" Foreground="White"/>
             <ListView ItemsSource="{Binding MVM.SelectedUser.Calendar}" SelectedIndex="{Binding MVM.SelectedDateIndex}">
             </ListView>
         </StackPanel>
@@ -48,11 +56,11 @@
             <WrapPanel HorizontalAlignment="Center" >
                 <StackPanel>
                     <DatePicker SelectedDate="{Binding SelectedDate}"/>
-                    <Button Content="Dodaj dyżur"  Command="{Binding AddDateCommand}"/>
+                    <Button Content="Dodaj dyżur"  Command="{Binding AddDateCommand}" Height="30" Width="150"/>
                 </StackPanel>
-                <Button Content="Usuń dyżur" Margin="10,0,0,0" Command="{Binding DeleteDateCommand}"/>
+                <Button Content="Usuń dyżur" Margin="10,0,0,0" Command="{Binding DeleteDateCommand}" Height="30" Width="130" VerticalAlignment="Bottom"/>
             </WrapPanel>
-            <Label Content="{Binding WrongFormat}"/>
+            <TextBlock Text="{Binding WrongFormat}" TextWrapping="Wrap" FontFamily="helvetica" FontWeight="Light" FontSize="20" Opacity="0.5" Foreground="White"/>
         </StackPanel>
         
     </Grid>

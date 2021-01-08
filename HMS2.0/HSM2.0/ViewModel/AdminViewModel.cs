@@ -16,6 +16,7 @@ namespace HSM2._0.ViewModel
         {
             MVM = mvm;
             SelectedDate = DateTime.Today;
+            MVM.SelectedUser = MVM.ListOfUsers.ElementAt(0);
         }
         public MainViewModel MVM { get; set; }
 
@@ -30,6 +31,8 @@ namespace HSM2._0.ViewModel
         public ICommand DeleteDateCommand => new RelayCommand(()=> ExecuteDeleteDateCommand());
 
         public ICommand AddNewUserCommand => new RelayCommand(() => ExecuteAddNewUserCommand());
+
+        public ICommand DeleteUserCommand => new RelayCommand(() => ExecuteDeleteUserCommand());
 
         private void ExecuteAddDateCommand()
         {
@@ -71,7 +74,7 @@ namespace HSM2._0.ViewModel
                         }
                         else if (MVM.SelectedUser.Speciality == "Laryngolog")
                         {
-                            if (MVM.NeurologistsCalendar.Contains(SelectedDate))
+                            if (MVM.LaryngologistsCalendar.Contains(SelectedDate))
                             {
                                 WrongFormat = "Tego dnia ma dyżur inny laryngolog";
                             }
@@ -83,7 +86,7 @@ namespace HSM2._0.ViewModel
                         }
                         else if (MVM.SelectedUser.Speciality == "Urolog")
                         {
-                            if (MVM.NeurologistsCalendar.Contains(SelectedDate))
+                            if (MVM.UrologistsCalendar.Contains(SelectedDate))
                             {
                                 WrongFormat = "Tego dnia ma dyżur inny urolog";
                             }
@@ -95,7 +98,7 @@ namespace HSM2._0.ViewModel
                         }
                         else if (MVM.SelectedUser.Speciality == "Kardiolog")
                         {
-                            if (MVM.NeurologistsCalendar.Contains(SelectedDate))
+                            if (MVM.CardiologistsCalendar.Contains(SelectedDate))
                             {
                                 WrongFormat = "Tego dnia ma dyżur inny kardiolog";
                             }
@@ -126,7 +129,15 @@ namespace HSM2._0.ViewModel
 
         private void ExecuteAddNewUserCommand()
         {
-            MVM.SelectedViewModel = MVM.ANUVM;
+            MVM.SelectedViewModel = new AddNewUserViewModel(MVM);
+        }
+
+        private void ExecuteDeleteUserCommand()
+        {
+            if (MVM.SelectedUser.GetType() == typeof(Doctor)) MVM.ListOfDoctors.Remove(MVM.SelectedUser);
+            if (MVM.SelectedUser.GetType() == typeof(Nurse)) MVM.ListOfNurses.Remove(MVM.SelectedUser);
+            MVM.ListOfUsers.Remove(MVM.SelectedUser);
+
         }
     }
 }

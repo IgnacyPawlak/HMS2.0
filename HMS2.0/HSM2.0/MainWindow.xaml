@@ -19,7 +19,11 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid x:Name="LayoutRoot">
-        <Border CornerRadius="10">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Border CornerRadius="10" Grid.RowSpan="2">
             <Border.Background>
                 <LinearGradientBrush>
                     <GradientStop Color="#7be9f6" Offset="0.0"/>
@@ -28,6 +32,6 @@
             </Border.Background>
         </Border>
             <ContentControl Content="{Binding SelectedViewModel}"/>
-            <Button Command="{Binding ExitCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Height="25" Content="Wyjdź" Margin="0,0,10,10"/>
+            <Button Command="{Binding ExitCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="80" Height="30" Content="Wyjdź" Grid.Row="1" Margin="10"/>
     </Grid>
 </Window>

@@ -49,20 +49,20 @@ namespace HSM2._0.ViewModel
         ObservableCollection<IUsers> _listOfNurses = new ObservableCollection<IUsers>();
         public ObservableCollection<IUsers> ListOfNurses { get { return _listOfNurses; } set { this.Set(nameof(ListOfNurses), ref _listOfNurses, value); } }
 
-        User _selectedUser;
-        public User SelectedUser { get { return _selectedUser; } set { this.Set(nameof(SelectedUser), ref _selectedUser, value); } }
+        IUsers _selectedUser;
+        public IUsers SelectedUser { get { return _selectedUser; } set { this.Set(nameof(SelectedUser), ref _selectedUser, value); } }
 
-        User _selectedDoctor;
-        public User SelectedDoctor { get { return _selectedDoctor; } set { this.Set(nameof(SelectedDoctor), ref _selectedDoctor, value); } }
+        IUsers _selectedDoctor;
+        public IUsers SelectedDoctor { get { return _selectedDoctor; } set { this.Set(nameof(SelectedDoctor), ref _selectedDoctor, value); } }
 
-        User _selectedNurse;
-        public User SelectedNurse { get { return _selectedNurse; } set { this.Set(nameof(SelectedNurse), ref _selectedNurse, value); } }
+        IUsers _selectedNurse;
+        public IUsers SelectedNurse { get { return _selectedNurse; } set { this.Set(nameof(SelectedNurse), ref _selectedNurse, value); } }
 
         int _selectedDateIndex;
         public int SelectedDateIndex { get { return _selectedDateIndex; } set { this.Set(nameof(SelectedDateIndex), ref _selectedDateIndex, value); } }
 
-        List<DateTime> _cardilogistsCalendar = new List<DateTime>();
-        public List<DateTime> CardiologistsCalendar { get { return _cardilogistsCalendar; } set { this.Set(nameof(CardiologistsCalendar), ref _cardilogistsCalendar, value); } }
+        List<DateTime> _cardiologistsCalendar = new List<DateTime>();
+        public List<DateTime> CardiologistsCalendar { get { return _cardiologistsCalendar; } set { this.Set(nameof(CardiologistsCalendar), ref _cardiologistsCalendar, value); } }
 
         List<DateTime> _urologistsCalendar = new List<DateTime>();
         public List<DateTime> UrologistsCalendar { get { return _urologistsCalendar; } set { this.Set(nameof(UrologistsCalendar), ref _urologistsCalendar, value); } }
@@ -79,10 +79,14 @@ namespace HSM2._0.ViewModel
 
         private void ExecuteExitCommand()
         {
+            foreach (var item in ListOfUsers)
+            {
+                if (!Users.Contains(item)) Users.Add(item);
+            }
             BinaryFormatter bf = new BinaryFormatter();
             using (FileStream fs = new FileStream("lista.dat", FileMode.OpenOrCreate, FileAccess.ReadWrite))
             {
-                bf.Serialize(fs, ListOfUsers);
+                bf.Serialize(fs, Users);
             }
             App.Current.Shutdown();
         }
@@ -95,20 +99,15 @@ namespace HSM2._0.ViewModel
             {
                 using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 {
-                    ListOfUsers = (ObservableCollection<IUsers>)bf.Deserialize(fs);
+                    Users = (List<IUsers>)bf.Deserialize(fs);
                 }
             }
             else
             {
                 Users.Add(Admin);
             }
-            UVM = new UserViewModel(this);
             LVM = new LoginViewModel(this);
-            AVM = new AdminViewModel(this);
-            ANUVM = new AddNewUserViewModel(this);
             _selectedViewModel = LVM;
-            Doctor.Calendar.Add(DateTime.Today);
-            Nurse.Calendar.Add(DateTime.Today);
             foreach (IUsers user in Users)
             {
                 int thisMonth = DateTime.Today.Month;

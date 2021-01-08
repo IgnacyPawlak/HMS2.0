@@ -6,59 +6,58 @@
              xmlns:local="clr-namespace:HSM2._0.Views"
              xmlns:iconPaks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:components="clr-namespace:HSM2._0.Components"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="600" d:DesignWidth="800"
              DataContext="{Binding AddNewUser, Source={StaticResource Locator}}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
-        <StackPanel>
+        <StackPanel VerticalAlignment="Center">
+            <iconPaks:PackIconMaterial Kind="Account" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Height="150" Width="150"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBox Text="{Binding Name}" FontFamily="helvetica" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Width="235" Opacity="0.5" Foreground="White"/>
-                <iconPaks:PackIconMaterial Kind="Account" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                <TextBox Text="{Binding Name}" FontFamily="helvetica" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Width="251" Opacity="0.5" Foreground="White"/>
+                
             </StackPanel>
-            <Border Width="250" Height="2" Background="White" Opacity="0.5"/>
+            <Border Width="251" Height="2" Background="White" Opacity="0.5"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBox Text="{Binding Surname}" FontFamily="helvetica" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Width="235" Opacity="0.5" Foreground="White"/>
-                <iconPaks:PackIconMaterial Kind="Account" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                <TextBox Text="{Binding Surname}" FontFamily="helvetica" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Width="251" Opacity="0.5" Foreground="White"/>
+                
             </StackPanel>
-            <Border Width="250" Height="2" Background="White" Opacity="0.5"/>
+            <Border Width="251" Height="2" Background="White" Opacity="0.5"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBox Text="{Binding Pesel}" FontFamily="helvetica" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Width="235" Opacity="0.5" Foreground="White"/>
-                <iconPaks:PackIconMaterial Kind="Account" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                <TextBox Text="{Binding Pesel}" FontFamily="helvetica" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Width="251" Opacity="0.5" Foreground="White"/>
+               
             </StackPanel>
-            <Border Width="250" Height="2" Background="White" Opacity="0.5"/>
+            <Border Width="251" Height="2" Background="White" Opacity="0.5"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBox Text="{Binding Username}" FontFamily="helvetica" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Width="235" Opacity="0.5" Foreground="White"/>
-                <iconPaks:PackIconMaterial Kind="Account" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+                <TextBox Text="{Binding Username}" FontFamily="helvetica" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Width="251" Opacity="0.5" Foreground="White"/>
+                
             </StackPanel>
-            <Border Width="250" Height="2" Background="White" Opacity="0.5"/>
+            <Border Width="251" Height="2" Background="White" Opacity="0.5"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <components:BindablePasswordBox Password="{Binding Password}" />
+                <components:BindablePasswordBox Password="{Binding Password}"/>
                 <iconPaks:PackIconMaterial Kind="FormTextboxPassword" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
             </StackPanel>
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Positions}">
-                <DataGrid.ColumnHeaderStyle>
-                    <Style TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="Background" Value="Transparent"/>
-                    </Style>
-                </DataGrid.ColumnHeaderStyle>
-                <DataGrid.RowHeaderStyle>
-                    <Style TargetType="{x:Type DataGridRowHeader}">
-                        <Setter Property="Background" Value="Transparent"/>
-                    </Style>
-                </DataGrid.RowHeaderStyle>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Position}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <ComboBox ItemsSource="{Binding Positions}"></ComboBox>                            
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid>
+            <Label Content="Pozycja:" HorizontalAlignment="Center" Width="251" Opacity="0.5" FontWeight="Light"/>
+            <ComboBox ItemsSource="{Binding Positions}" SelectedIndex="{Binding SelectedIndex}" Width="251" FontFamily="helvetica" Background="Transparent" FontSize="20" Opacity="0.5" Foreground="Black">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
+            <Border Width="251" Height="2" Background="White" Opacity="0.5"/>
+            <TextBox Text="{Binding StringPWZ}" FontFamily="helvetica" FontWeight="Light" FontSize="20" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" Width="251" Opacity="0.5" Foreground="White" Visibility="{Binding DoctorSelected, Converter={StaticResource BoolToVisConverter}}"/>
+            <Border Width="251" Height="2" Background="White" Opacity="0.5" Visibility="{Binding DoctorSelected, Converter={StaticResource BoolToVisConverter}}"/>
+            <ComboBox ItemsSource="{Binding Specialities}" SelectedIndex="{Binding SelectedIndexSpecialities}" Text="Specjalizacja" IsEditable="True" IsReadOnly="true" Visibility="{Binding DoctorSelected, Converter={StaticResource BoolToVisConverter}}" Width="251" Background="Transparent" FontSize="20" Opacity="0.5"/>
+            <Border Width="251" Height="2" Background="White" Opacity="0.5" Visibility="{Binding DoctorSelected, Converter={StaticResource BoolToVisConverter}}"/>
+            <Label Content="{Binding WrongFormat}" HorizontalAlignment="Center" Opacity="0.5" Foreground="Red"/>
+            <Button Content="Dodaj Użytkownika" Command="{Binding AddNewUserCommand}" Height="30" Width="251" Margin="20"/>
+            <Button Content="Wróć do panelu sterowania" Command="{Binding GoBackCommand}" Height="30" Width="251" Margin="10"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -38,12 +38,12 @@ namespace HSM2._0.ViewModel
                 {
                     MVM.LoggedInUser = user;
                     if (user.GetType() != typeof(Admin))
-                    {                        
-                        MVM.SelectedViewModel = MVM.UVM;
+                    {
+                        MVM.SelectedViewModel = new UserViewModel(MVM);
                     }
                     else
                     {
-                        MVM.SelectedViewModel = MVM.AVM;
+                        MVM.SelectedViewModel = new AdminViewModel(MVM);
                     }
                 }
                 else
