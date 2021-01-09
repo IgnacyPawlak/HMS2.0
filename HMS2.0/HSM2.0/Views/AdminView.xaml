@@ -46,7 +46,7 @@
             </DataGrid>
         </StackPanel>        
             <Button Content="Dodaj nowego użytkownika" Command="{Binding AddNewUserCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="0" Margin="10,10,10,10" Width="270" Height="30"/>
-            <!--<Button Content="Edytuj" Command="{Binding EditUserCommand}" VerticalAlignment="Bottom" Grid.Column="0" HorizontalAlignment="Center" Width="100" Height="30" Margin="10"/>-->
+            <Button Content="Edytuj" Command="{Binding EditUserCommand}" VerticalAlignment="Bottom" Grid.Column="0" HorizontalAlignment="Center" Width="100" Height="30" Margin="10"/>
             <Button Content="Usuń wybranego użytkownika" Command="{Binding DeleteUserCommand}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="0" Margin="10,10,10,10" Width="270" Height="30"/>
         <StackPanel Grid.Column="1">
             <TextBlock Text="Dyżury:" FontFamily="helvetica" FontWeight="Light" FontSize="20" Opacity="0.5" Foreground="White"/>

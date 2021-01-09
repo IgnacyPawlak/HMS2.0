@@ -18,6 +18,8 @@ namespace HSM2._0.ViewModel
 
         LoginViewModel _lvm;
         public LoginViewModel LVM { get { return _lvm; } set { this.Set(nameof(LVM), ref _lvm, value); } }
+        EditUserViewModel _euvm;
+        public EditUserViewModel EUVM { get { return _euvm; } set { this.Set(nameof(EUVM), ref _euvm, value); } }
 
         List<IUsers> _users = new List<IUsers>();
         public List<IUsers> Users { get { return _users; } set { this.Set(nameof(Users), ref _users, value); } }
@@ -96,6 +98,7 @@ namespace HSM2._0.ViewModel
                 Users.Add(Admin);
             }
             LVM = new LoginViewModel(this);
+            //EUVM = new EditUserViewModel(this);
             _selectedViewModel = LVM;
             foreach (IUsers user in Users)
             {
